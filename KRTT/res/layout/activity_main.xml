@@ -1,27 +1,93 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".MainActivity" >
-    
-    
-    <RelativeLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="50dip"
-        android:background="#aaa">
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
         
+     <LinearLayout
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="#343434"
+        android:orientation="vertical" >
+
         <TextView
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/title_bar" />
-        
-    </RelativeLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Menu"
+            android:textSize="26sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Menu"
+            android:textSize="26sp" />
+    </LinearLayout>
     
+    
+	<LinearLayout
+	    android:id="@+id/app"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" 
+	    android:background="#dadada">
+	
+	    <RelativeLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="50dip"
+			android:background="#343434" >
+	       
+			<ImageButton
+            	android:id="@+id/BtnSlide"
+				android:layout_width="30dip"
+				android:layout_height="30dip"	
+				android:layout_marginLeft="15dip"
+			    android:layout_alignParentLeft="true"
+	            android:layout_centerVertical="true"
+				android:background="@drawable/ic_menu" >  
+			</ImageButton>
+			
+			<View
+		        android:layout_width="2dip"
+		        android:layout_height="fill_parent"
+		        android:layout_marginLeft="60dip"
+		        android:background="@layout/view_item_vertical_shadow" >
+		    </View>
+			
+	        <TextView
+	            android:layout_centerVertical="true"
+	            android:layout_centerHorizontal="true"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/title_bar"
+	            android:textColor="#FFFFFF"
+	            android:textStyle="bold" 
+	            android:textSize="15dip" >
+	        </TextView>
+	    </RelativeLayout>
+	    
+	    <View
+	        android:layout_width="fill_parent"
+	        android:layout_height="3dip"
+	        android:background="@layout/view_item_horizontal_shadow" >
+	    </View>
+	    
+	    
+	    <ListView
+	        android:layout_marginRight="10dip"
+	        android:layout_marginLeft="10dip"
+	        android:id="@+id/listView1"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" 
+	        android:divider="#dadada"
+	   		android:dividerHeight="3px"
+     		android:background="#FFF" 
+     		android:scrollbars="none">
+	    </ListView>
+	    
+	</LinearLayout>
+	
+</FrameLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
-</LinearLayout>
+    
