@@ -48,8 +48,8 @@ public final class R {
         public static final int listview_footer_business=0x7f030001;
         public static final int listview_header_business=0x7f030002;
         public static final int listview_item_business=0x7f030003;
-        public static final int view_item_horizontal_shadow=0x7f030004;
-        public static final int view_item_vertical_shadow=0x7f030005;
+        public static final int listview_item_horizontal_shadow=0x7f030004;
+        public static final int listview_item_vertical_shadow=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f080000;
