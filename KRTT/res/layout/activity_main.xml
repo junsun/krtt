@@ -13,24 +13,118 @@
         
         <LinearLayout
 	        android:layout_width="0dip"
-	        android:layout_height="fill_parent"
-	        android:background="#343434"
+	        android:layout_height="wrap_content"
 	        android:orientation="vertical" 
 	        android:layout_weight="0.3" >
-		
+	        
+           	<ImageView
+				android:layout_marginTop="12dip"
+				android:layout_marginLeft="25dip"
+				android:layout_marginRight="13dip"
+				android:layout_marginBottom="12dip"
+		        android:layout_width="50dip"
+		        android:layout_height="25dip"
+		        android:background="@drawable/ic_logo">
+		    </ImageView>
+		    
+           	<View
+		        android:layout_width="fill_parent"
+		        android:layout_height="2dip"
+		        android:background="@layout/menu_item_horizontal_r_shadow" >
+		    </View>
+		    
+       	 	<View
+	            android:layout_marginBottom="1dip"
+	            android:layout_width="fill_parent"
+	            android:layout_height="6dip"
+           		android:background="#555" >
+		    </View>
+            
 	        <TextView
-	            android:layout_width="match_parent"
+	            android:layout_marginBottom="1dip"
+	            android:padding="20dip"
+	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
+           		android:background="#343434"
 	            android:gravity="center_horizontal"
-	            android:text="Menu"
-	            android:textSize="26sp" />
+	            android:text="@string/menu_bs_list"
+	            android:textSize="14sp" />
+	        
+	        <TextView
+	            android:layout_marginBottom="1dip"
+	            android:padding="20dip"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+           		android:background="#343434"
+	            android:gravity="center_horizontal"
+	            android:text="@string/menu_bs_outers"
+	            android:textSize="14sp" />
 	
 	        <TextView
-	            android:layout_width="match_parent"
+	            android:layout_marginBottom="1dip"
+	            android:padding="20dip"
+	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
+           		android:background="#343434"
 	            android:gravity="center_horizontal"
-	            android:text="Menu"
-	            android:textSize="26sp" />
+	            android:text="@string/menu_bs_t_shirts"
+	            android:textSize="14sp" />
+	
+	        <TextView
+	            android:layout_marginBottom="1dip"
+	            android:padding="20dip"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+           		android:background="#343434"
+	            android:gravity="center_horizontal"
+	            android:text="@string/menu_bs_shirts"
+	            android:textSize="14sp"  />
+	        
+	        <TextView
+	            android:layout_marginBottom="1dip"
+	            android:padding="20dip"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+           		android:background="#343434"
+	            android:gravity="center_horizontal"
+	            android:text="@string/menu_bs_sweaters"
+	            android:textSize="14sp"  />
+	
+	        <TextView
+	            android:layout_marginBottom="1dip"
+	            android:padding="20dip"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+           		android:background="#343434"
+	            android:gravity="center_horizontal"
+	            android:text="@string/menu_bs_pants"
+	            android:textSize="14sp"  />
+	        
+	        <TextView
+	            android:layout_marginBottom="1dip"
+	            android:padding="20dip"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+           		android:background="#343434"
+	            android:gravity="center_horizontal"
+	            android:text="@string/menu_bs_jeans"
+	            android:textSize="14sp"  />
+	        
+	        <TextView
+	            android:padding="20dip"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+           		android:background="#343434"
+	            android:gravity="center_horizontal"
+	            android:text="@string/menu_bs_etc"
+	            android:textSize="14sp" />
+	        
+			<View
+		        android:layout_width="fill_parent"
+		        android:layout_height="2dip"
+		        android:background="@layout/menu_item_horizontal_shadow" >
+		    </View>
+	    
         </LinearLayout>
     </LinearLayout>
     
@@ -51,6 +145,7 @@
             	android:id="@+id/BtnSlide"
 				android:layout_width="30dip"
 				android:layout_height="30dip"	
+				android:padding="30dip"
 				android:layout_marginLeft="15dip"
 			    android:layout_alignParentLeft="true"
 	            android:layout_centerVertical="true"

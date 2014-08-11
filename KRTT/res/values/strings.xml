@@ -3,6 +3,19 @@
 
     <string name="title_bar">KRTT</string>
     <string name="footer_add_bs">업체등록하기</string>
+    
+    
+    <string name="menu_bs_list">업체목록</string>
+    <string name="menu_bs_outers">Outwears</string>
+    <string name="menu_bs_t_shirts">T-Shirts</string>
+    <string name="menu_bs_shirts">Shirts</string>
+    <string name="menu_bs_sweaters">Sweaters</string>
+    <string name="menu_bs_jeans">Jeans</string>
+    <string name="menu_bs_pants">Pants</string>
+    <string name="menu_bs_etc">ETC</string>
+    
+    
+    
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 
