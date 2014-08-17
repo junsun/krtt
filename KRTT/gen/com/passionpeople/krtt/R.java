@@ -18,6 +18,13 @@ public final class R {
     }
     public static final class attr {
     }
+    public static final class color {
+        public static final int click_blue=0x7f050000;
+        public static final int click_dark_gray=0x7f050001;
+        public static final int click_light_gray=0x7f050003;
+        public static final int click_medium_gray=0x7f050002;
+        public static final int white=0x7f050004;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -25,51 +32,167 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int ic_logo=0x7f020001;
-        public static final int ic_menu=0x7f020002;
+        public static final int cpn_1=0x7f020000;
+        public static final int cpn_10=0x7f020001;
+        public static final int cpn_102=0x7f020002;
+        public static final int cpn_104=0x7f020003;
+        public static final int cpn_105=0x7f020004;
+        public static final int cpn_106=0x7f020005;
+        public static final int cpn_107=0x7f020006;
+        public static final int cpn_108=0x7f020007;
+        public static final int cpn_109=0x7f020008;
+        public static final int cpn_11=0x7f020009;
+        public static final int cpn_110=0x7f02000a;
+        public static final int cpn_111=0x7f02000b;
+        public static final int cpn_112=0x7f02000c;
+        public static final int cpn_113=0x7f02000d;
+        public static final int cpn_114=0x7f02000e;
+        public static final int cpn_115=0x7f02000f;
+        public static final int cpn_117=0x7f020010;
+        public static final int cpn_118=0x7f020011;
+        public static final int cpn_119=0x7f020012;
+        public static final int cpn_12=0x7f020013;
+        public static final int cpn_120=0x7f020014;
+        public static final int cpn_122=0x7f020015;
+        public static final int cpn_123=0x7f020016;
+        public static final int cpn_124=0x7f020017;
+        public static final int cpn_127=0x7f020018;
+        public static final int cpn_129=0x7f020019;
+        public static final int cpn_13=0x7f02001a;
+        public static final int cpn_131=0x7f02001b;
+        public static final int cpn_133=0x7f02001c;
+        public static final int cpn_14=0x7f02001d;
+        public static final int cpn_15=0x7f02001e;
+        public static final int cpn_16=0x7f02001f;
+        public static final int cpn_17=0x7f020020;
+        public static final int cpn_18=0x7f020021;
+        public static final int cpn_19=0x7f020022;
+        public static final int cpn_2=0x7f020023;
+        public static final int cpn_20=0x7f020024;
+        public static final int cpn_21=0x7f020025;
+        public static final int cpn_22=0x7f020026;
+        public static final int cpn_23=0x7f020027;
+        public static final int cpn_24=0x7f020028;
+        public static final int cpn_25=0x7f020029;
+        public static final int cpn_26=0x7f02002a;
+        public static final int cpn_27=0x7f02002b;
+        public static final int cpn_28=0x7f02002c;
+        public static final int cpn_29=0x7f02002d;
+        public static final int cpn_3=0x7f02002e;
+        public static final int cpn_30=0x7f02002f;
+        public static final int cpn_31=0x7f020030;
+        public static final int cpn_32=0x7f020031;
+        public static final int cpn_33=0x7f020032;
+        public static final int cpn_35=0x7f020033;
+        public static final int cpn_36=0x7f020034;
+        public static final int cpn_37=0x7f020035;
+        public static final int cpn_38=0x7f020036;
+        public static final int cpn_39=0x7f020037;
+        public static final int cpn_4=0x7f020038;
+        public static final int cpn_40=0x7f020039;
+        public static final int cpn_41=0x7f02003a;
+        public static final int cpn_42=0x7f02003b;
+        public static final int cpn_44=0x7f02003c;
+        public static final int cpn_45=0x7f02003d;
+        public static final int cpn_46=0x7f02003e;
+        public static final int cpn_48=0x7f02003f;
+        public static final int cpn_49=0x7f020040;
+        public static final int cpn_5=0x7f020041;
+        public static final int cpn_51=0x7f020042;
+        public static final int cpn_52=0x7f020043;
+        public static final int cpn_53=0x7f020044;
+        public static final int cpn_54=0x7f020045;
+        public static final int cpn_56=0x7f020046;
+        public static final int cpn_57=0x7f020047;
+        public static final int cpn_58=0x7f020048;
+        public static final int cpn_6=0x7f020049;
+        public static final int cpn_61=0x7f02004a;
+        public static final int cpn_62=0x7f02004b;
+        public static final int cpn_63=0x7f02004c;
+        public static final int cpn_64=0x7f02004d;
+        public static final int cpn_65=0x7f02004e;
+        public static final int cpn_66=0x7f02004f;
+        public static final int cpn_67=0x7f020050;
+        public static final int cpn_68=0x7f020051;
+        public static final int cpn_7=0x7f020052;
+        public static final int cpn_70=0x7f020053;
+        public static final int cpn_71=0x7f020054;
+        public static final int cpn_73=0x7f020055;
+        public static final int cpn_74=0x7f020056;
+        public static final int cpn_75=0x7f020057;
+        public static final int cpn_8=0x7f020058;
+        public static final int cpn_80=0x7f020059;
+        public static final int cpn_81=0x7f02005a;
+        public static final int cpn_82=0x7f02005b;
+        public static final int cpn_84=0x7f02005c;
+        public static final int cpn_86=0x7f02005d;
+        public static final int cpn_88=0x7f02005e;
+        public static final int cpn_89=0x7f02005f;
+        public static final int cpn_9=0x7f020060;
+        public static final int cpn_90=0x7f020061;
+        public static final int cpn_91=0x7f020062;
+        public static final int cpn_92=0x7f020063;
+        public static final int cpn_93=0x7f020064;
+        public static final int cpn_94=0x7f020065;
+        public static final int cpn_95=0x7f020066;
+        public static final int cpn_96=0x7f020067;
+        public static final int cpn_97=0x7f020068;
+        public static final int cpn_98=0x7f020069;
+        public static final int ic_default=0x7f02006a;
+        public static final int ic_launcher=0x7f02006b;
+        public static final int ic_like=0x7f02006c;
+        public static final int ic_logo=0x7f02006d;
+        public static final int ic_menu=0x7f02006e;
     }
     public static final class id {
-        public static final int BtnSlide=0x7f090002;
-        public static final int action_settings=0x7f090008;
-        public static final int app=0x7f090001;
-        public static final int imageView1=0x7f090004;
-        public static final int linearLayout1=0x7f090005;
-        public static final int listView1=0x7f090003;
-        public static final int menu=0x7f090000;
-        public static final int textView1=0x7f090006;
-        public static final int textView2=0x7f090007;
+        public static final int BtnSlide=0x7f0a0002;
+        public static final int action_settings=0x7f0a000b;
+        public static final int app=0x7f0a0001;
+        public static final int ic_like=0x7f0a0009;
+        public static final int imageView1=0x7f0a0004;
+        public static final int layout_like=0x7f0a0008;
+        public static final int linearLayout1=0x7f0a0005;
+        public static final int listView1=0x7f0a0003;
+        public static final int menu=0x7f0a0000;
+        public static final int textView1=0x7f0a0006;
+        public static final int textView2=0x7f0a0007;
+        public static final int txt_like=0x7f0a000a;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int listview_footer_business=0x7f030001;
-        public static final int listview_header_business=0x7f030002;
-        public static final int listview_item_business=0x7f030003;
-        public static final int listview_item_horizontal_shadow=0x7f030004;
-        public static final int listview_item_vertical_shadow=0x7f030005;
-        public static final int menu_item_horizontal_r_shadow=0x7f030006;
-        public static final int menu_item_horizontal_shadow=0x7f030007;
+        public static final int activity_splash=0x7f030001;
+        public static final int listview_footer_company=0x7f030002;
+        public static final int listview_header_company=0x7f030003;
+        public static final int listview_item=0x7f030004;
+        public static final int listview_item_circle=0x7f030005;
+        public static final int listview_item_circle_darkgray=0x7f030006;
+        public static final int listview_item_horizontal_shadow=0x7f030007;
+        public static final int listview_item_like_selector=0x7f030008;
+        public static final int listview_item_selector=0x7f030009;
+        public static final int listview_item_vertical_shadow=0x7f03000a;
+        public static final int menu_item_horizontal_r_shadow=0x7f03000b;
+        public static final int menu_item_horizontal_shadow=0x7f03000c;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
+        public static final int main=0x7f090000;
     }
     public static final class string {
-        public static final int action_settings=0x7f06000a;
-        public static final int footer_add_bs=0x7f060001;
-        public static final int hello_world=0x7f06000b;
-        public static final int menu_bs_etc=0x7f060009;
-        public static final int menu_bs_jeans=0x7f060007;
-        public static final int menu_bs_list=0x7f060002;
-        public static final int menu_bs_outers=0x7f060003;
-        public static final int menu_bs_pants=0x7f060008;
-        public static final int menu_bs_shirts=0x7f060005;
-        public static final int menu_bs_sweaters=0x7f060006;
-        public static final int menu_bs_t_shirts=0x7f060004;
-        public static final int title_bar=0x7f060000;
+        public static final int action_settings=0x7f07000a;
+        public static final int footer_add_bs=0x7f070001;
+        public static final int hello_world=0x7f07000b;
+        public static final int menu_bs_etc=0x7f070009;
+        public static final int menu_bs_jeans=0x7f070007;
+        public static final int menu_bs_list=0x7f070002;
+        public static final int menu_bs_outers=0x7f070003;
+        public static final int menu_bs_pants=0x7f070008;
+        public static final int menu_bs_shirts=0x7f070005;
+        public static final int menu_bs_sweaters=0x7f070006;
+        public static final int menu_bs_t_shirts=0x7f070004;
+        public static final int title_bar=0x7f070000;
     }
     public static final class style {
         /** 
@@ -93,10 +216,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
 }

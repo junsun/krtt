@@ -13,41 +13,50 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.passionpeople.krtt.handlers.MainActivityHandler;
 import com.passionpeople.krtt.threads.HttpGetThread;
 import com.passionpeople.krtt.vo.AnimParams;
-import com.passionpeople.krtt.vo.Business;
-import com.passionpeople.krtt.vo.BusinessAdapter;
+import com.passionpeople.krtt.vo.Company;
+import com.passionpeople.krtt.vo.CompanyAdapter;
+import com.passoinpeople.krtt.Constants.Constants;
 
-public class MainActivity extends Activity implements AnimationListener, OnClickListener {
+public class MainActivity extends Activity implements AnimationListener, OnClickListener, OnItemClickListener {
 
 	private ListView listview;
 	private View listHeader;
 	private View listFooter;
-	private BusinessAdapter adapter;
-	private ArrayList<Business> alist;
+	private CompanyAdapter adapter;
+	private ArrayList<Company> alist;
 	private View aniFixView; 
 	private View aniMovView;
 	private boolean menuOut = false;
 	private AnimParams animParams;
 	private HttpGetThread httpGetThread;
+	private MainActivityHandler mainActivityHandler;
 	
-	
-	@Override
+	@Override 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
-
+		mainActivityHandler = MainActivityHandler.getInstance();
+		
 		aniFixView = findViewById(R.id.menu);
 		aniMovView = findViewById(R.id.app);
 		listview = (ListView) findViewById(R.id.listView1);
-		listHeader = getLayoutInflater().inflate(R.layout.listview_header_business, null, false);
-		listFooter = getLayoutInflater().inflate(R.layout.listview_footer_business, null, false);
-		
-		alist = new ArrayList<Business>();
-		adapter = new BusinessAdapter(this, alist);
+		listview.setOnItemClickListener(this);
+		listHeader = getLayoutInflater().inflate(R.layout.listview_header_company, null, false);
+		listFooter = getLayoutInflater().inflate(R.layout.listview_footer_company, null, false);
+
+		alist = new ArrayList<Company>();
+		adapter = new CompanyAdapter(this, alist);
+		mainActivityHandler.setContext(this);
+		mainActivityHandler.setCompanyAdapter(adapter);
+		mainActivityHandler.setListView(listview);
 		
 		ViewUtils.printView("aniFixView", aniFixView);
 		ViewUtils.printView("app", aniMovView);
@@ -56,17 +65,9 @@ public class MainActivity extends Activity implements AnimationListener, OnClick
 		listview.setAdapter(adapter);
 		listview.addHeaderView(listHeader);
 		listview.addFooterView(listFooter);
-
-		adapter.add(new Business(getApplicationContext(), "업체1", "www.areanashop.com"));
-		adapter.add(new Business(getApplicationContext(), "업체1", "www.naver.com"));
-		adapter.add(new Business(getApplicationContext(), "업체13", "www.peace-worker.com"));
-		adapter.add(new Business(getApplicationContext(), "업체14", "www.google.com"));
-		adapter.add(new Business(getApplicationContext(), "업체11", "www.areanashop.com"));
-		adapter.add(new Business(getApplicationContext(), "업체1", "www.areanashop.com"));
-		adapter.add(new Business(getApplicationContext(), "업체1", "www.naver.com"));
-		adapter.add(new Business(getApplicationContext(), "업체13", "www.peace-worker.com"));
-		adapter.add(new Business(getApplicationContext(), "업체14", "www.google.com"));
-		adapter.add(new Business(getApplicationContext(), "업체11", "www.areanashop.com"));
+		
+    	httpGetThread = new HttpGetThread(Constants.HTTPGET_GET_COMPANYLIST, null);
+		httpGetThread.start();
 	}
 
 	
@@ -77,7 +78,7 @@ public class MainActivity extends Activity implements AnimationListener, OnClick
 	public void onClick(View v) {
 		Animation anim;
 		animParams = new AnimParams();
-		
+		 
 		int w = aniMovView.getMeasuredWidth();
 		int h = aniMovView.getMeasuredHeight();
 		int left = (int) (aniMovView.getMeasuredWidth() * 0.3);
@@ -95,14 +96,19 @@ public class MainActivity extends Activity implements AnimationListener, OnClick
 		anim.setAnimationListener(this);
 		anim.setFillAfter(true);
 		aniMovView.startAnimation(anim);
-		
-		httpGetThread = new HttpGetThread("http://54.191.253.51/");
-		httpGetThread.start();
-		
-//		http://54.191.253.51/CHECK_AUTH?MAIL_TO=junsun2005@naver.com&AUTH_ID=7485
-//		http://54.191.253.51/SEND_MAIL?MAIL_TO=junsun2005@naver.com
 	}
 	
+	
+	/**
+	 * Function : List Click 리스너
+	 */
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		Company clickedCp = (Company)parent.getAdapter().getItem(position);
+		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"+clickedCp.getUrl()));
+		startActivity(intent);
+		
+	}
     
 	/**
 	 * Function : 메뉴 핸들러 Click 리스너
@@ -138,10 +144,6 @@ public class MainActivity extends Activity implements AnimationListener, OnClick
 			aniFixView.setVisibility(View.INVISIBLE);
 		}
 		layoutApp(menuOut);
-		
-//		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
-//		startActivity(intent);
-		
 	}
 
 	
@@ -162,4 +164,6 @@ public class MainActivity extends Activity implements AnimationListener, OnClick
 		System.out.println("onAnimationStart");
 	}
 
+
+	
 }
