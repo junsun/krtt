@@ -150,32 +150,37 @@ public final class R {
     }
     public static final class id {
         public static final int BtnSlide=0x7f0a0002;
-        public static final int action_settings=0x7f0a000b;
+        public static final int action_settings=0x7f0a000f;
         public static final int app=0x7f0a0001;
-        public static final int ic_like=0x7f0a0009;
-        public static final int imageView1=0x7f0a0004;
-        public static final int layout_like=0x7f0a0008;
-        public static final int linearLayout1=0x7f0a0005;
+        public static final int ic_like=0x7f0a000d;
+        public static final int imageView1=0x7f0a0008;
+        public static final int layout_like=0x7f0a000c;
+        public static final int linearLayout1=0x7f0a0009;
         public static final int listView1=0x7f0a0003;
         public static final int menu=0x7f0a0000;
-        public static final int textView1=0x7f0a0006;
-        public static final int textView2=0x7f0a0007;
-        public static final int txt_like=0x7f0a000a;
+        public static final int textView1=0x7f0a000a;
+        public static final int textView2=0x7f0a000b;
+        public static final int txt_like=0x7f0a000e;
+        public static final int user_auth_email=0x7f0a0005;
+        public static final int user_auth_email_txt=0x7f0a0004;
+        public static final int user_auth_id=0x7f0a0007;
+        public static final int user_auth_id_txt=0x7f0a0006;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_splash=0x7f030001;
-        public static final int listview_footer_company=0x7f030002;
-        public static final int listview_header_company=0x7f030003;
-        public static final int listview_item=0x7f030004;
-        public static final int listview_item_circle=0x7f030005;
-        public static final int listview_item_circle_darkgray=0x7f030006;
-        public static final int listview_item_horizontal_shadow=0x7f030007;
-        public static final int listview_item_like_selector=0x7f030008;
-        public static final int listview_item_selector=0x7f030009;
-        public static final int listview_item_vertical_shadow=0x7f03000a;
-        public static final int menu_item_horizontal_r_shadow=0x7f03000b;
-        public static final int menu_item_horizontal_shadow=0x7f03000c;
+        public static final int activity_user_auth=0x7f030002;
+        public static final int listview_footer_company=0x7f030003;
+        public static final int listview_header_company=0x7f030004;
+        public static final int listview_item=0x7f030005;
+        public static final int listview_item_circle=0x7f030006;
+        public static final int listview_item_circle_darkgray=0x7f030007;
+        public static final int listview_item_horizontal_shadow=0x7f030008;
+        public static final int listview_item_like_selector=0x7f030009;
+        public static final int listview_item_selector=0x7f03000a;
+        public static final int listview_item_vertical_shadow=0x7f03000b;
+        public static final int menu_item_horizontal_r_shadow=0x7f03000c;
+        public static final int menu_item_horizontal_shadow=0x7f03000d;
     }
     public static final class menu {
         public static final int main=0x7f090000;

@@ -2,6 +2,7 @@ package com.passionpeople.krtt.threads;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -14,6 +15,7 @@ import android.os.Message;
 
 import com.passionpeople.krtt.R;
 import com.passionpeople.krtt.handlers.MainActivityHandler;
+import com.passionpeople.krtt.handlers.UserAuthActivityHandler;
 import com.passionpeople.krtt.utils.JsonUtil;
 import com.passionpeople.krtt.vo.Company;
 import com.passoinpeople.krtt.Constants.Constants;
@@ -23,6 +25,7 @@ public class HttpGetThread extends Thread {
 	private String url;
 	private JsonUtil jsonUtil;
 	private MainActivityHandler mainActivityHandler;
+	private UserAuthActivityHandler userAuthActivityHandler;
 	Message msg;
 	
 	public HttpGetThread(int urlType, HashMap<String, Object> param){
@@ -33,10 +36,17 @@ public class HttpGetThread extends Thread {
 			case Constants.HTTPGET_GET_COMPANYLIST:
 				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_COMPANYLIST;	
 				break;
+	
+			case Constants.HTTPGET_GET_AUTH:
+				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_CHECK_AUTH
+				+ "?" + Constants.HTTPGET_PARAM_MAIL_TO + "=" + param.get("email").toString()
+				+ "&" + Constants.HTTPGET_PARAM_AUTH_ID + "=" + param.get("authId").toString();	
+				break;
 		}
 		
 		jsonUtil = new JsonUtil();
 		mainActivityHandler = MainActivityHandler.getInstance();
+		userAuthActivityHandler = UserAuthActivityHandler.getInstance();
 	}
 	
 	public void run() {
@@ -44,7 +54,7 @@ public class HttpGetThread extends Thread {
 		
 		switch (msg.what) {
 		
-			case Constants.HTTPGET_GET_COMPANYLIST:
+		case Constants.HTTPGET_GET_COMPANYLIST:
 			try {
 				String res = EntityUtils.toString(getHttp(url));
 				ArrayList<HashMap<String, Object>> resultList = jsonUtil.Json2QList(res);
@@ -59,13 +69,22 @@ public class HttpGetThread extends Thread {
 //					img = EntityUtils.toByteArray(getHttp(Constants.HTTPGET_URL_BASE + Constants.HTTPGET_GET_IMAGE + resultList.get(i).get("imgUrl")));
 //
 //				}
-
 				msg.obj = resultList;
 				mainActivityHandler.sendMessage(msg);	
-				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			break;
+			
+			case Constants.HTTPGET_GET_AUTH:
+				try {
+					String res = EntityUtils.toString(getHttp(url));
+					Map<String, String> resultMap = jsonUtil.Json2Map(res);
+					msg.obj = resultMap;
+					userAuthActivityHandler.sendMessage(msg);	
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			break;
 		}
 	}
