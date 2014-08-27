@@ -15,6 +15,7 @@ import android.os.Message;
 
 import com.passionpeople.krtt.R;
 import com.passionpeople.krtt.handlers.MainActivityHandler;
+import com.passionpeople.krtt.handlers.SplashActivityHandler;
 import com.passionpeople.krtt.handlers.UserAuthActivityHandler;
 import com.passionpeople.krtt.utils.JsonUtil;
 import com.passionpeople.krtt.vo.Company;
@@ -26,6 +27,7 @@ public class HttpGetThread extends Thread {
 	private JsonUtil jsonUtil;
 	private MainActivityHandler mainActivityHandler;
 	private UserAuthActivityHandler userAuthActivityHandler;
+	private SplashActivityHandler splashActivityHandler;
 	Message msg;
 	
 	public HttpGetThread(int urlType, HashMap<String, Object> param){
@@ -47,6 +49,7 @@ public class HttpGetThread extends Thread {
 		jsonUtil = new JsonUtil();
 		mainActivityHandler = MainActivityHandler.getInstance();
 		userAuthActivityHandler = UserAuthActivityHandler.getInstance();
+		splashActivityHandler = SplashActivityHandler.getInstance();
 	}
 	
 	public void run() {
@@ -81,7 +84,7 @@ public class HttpGetThread extends Thread {
 					String res = EntityUtils.toString(getHttp(url));
 					Map<String, String> resultMap = jsonUtil.Json2Map(res);
 					msg.obj = resultMap;
-					userAuthActivityHandler.sendMessage(msg);	
+					splashActivityHandler.sendMessage(msg);	
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

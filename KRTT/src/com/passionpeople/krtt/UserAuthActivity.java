@@ -3,6 +3,7 @@ package com.passionpeople.krtt;
 import java.util.HashMap;
 
 import com.passionpeople.krtt.threads.HttpGetThread;
+import com.passionpeople.krtt.utils.FileManager;
 import com.passoinpeople.krtt.Constants.Constants;
 
 import android.app.Activity;
@@ -21,6 +22,7 @@ public class UserAuthActivity extends Activity implements OnClickListener{
 	private EditText authIdTxt;
 	private HttpGetThread httpGetThread;
 	private HashMap<String, Object> httpParam;
+	private FileManager fileManager;
 	
 	
 	@Override 
@@ -35,6 +37,7 @@ public class UserAuthActivity extends Activity implements OnClickListener{
         
         sendEmail.setOnClickListener(this);
         sendAuthId.setOnClickListener(this);
+        fileManager = new FileManager();
 	}
 
 	@Override
@@ -43,15 +46,9 @@ public class UserAuthActivity extends Activity implements OnClickListener{
 		if(v.getId() == R.id.user_auth_email){
 			Log.d("###DEBUG####","auth email clicked");
 			
-			
 		} else if (v.getId() == R.id.user_auth_id){
 			Log.d("###DEBUG####","auth id clicked");
-			httpParam = new HashMap<String, Object>();
-			httpParam.put("email", "junsun2005@naver.com");
-			httpParam.put("authId", "7485");
-			
-			httpGetThread = new HttpGetThread(Constants.HTTPGET_GET_AUTH, httpParam);
-			httpGetThread.start();
+			fileManager.writeUserAuth("junsun2005@naver.com", "7485");
 		}
 		
 	}

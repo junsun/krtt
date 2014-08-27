@@ -37,23 +37,35 @@ public class FileManager {
 	public FileManager() {
 		File rootDir = new File(Environment.getExternalStorageDirectory(), userPropDirStr);
 		File userPropDir = new File(Environment.getExternalStorageDirectory() + rootDirectory, userPropDirStr);
+		File userPropFile = new File(Environment.getExternalStorageDirectory() + rootDirectory + "/" + userPropDirStr + "/", userPropStr);
 
 		if (!rootDir.exists()) {
 			if (!rootDir.mkdirs()) {
-				Log.d("[FileManager getDirectory]", "failed to create directory");
+				Log.d("[FileManager getDirectory]", "failed to create krtt directory");
 			}
 		}
 
 		if (!userPropDir.exists()) {
 			if (!userPropDir.mkdirs()) {
-				Log.d("[FileManager getDirectory]", "failed to create directory");
+				Log.d("[FileManager getDirectory]", "failed to create user_prop directory");
+			}
+		}
+
+		if (!userPropFile.exists()) {
+			try {
+				if (!userPropFile.createNewFile()) {
+					Log.d("[FileManager getDirectory]", "failed to create user_prop.dat");
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}
 
+	
 	public void writeUserAuth(String email, String authId) {
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter(rootDirectory + "/" + userPropDirStr + "/" + userPropStr));
+			BufferedWriter out = new BufferedWriter(new FileWriter(Environment.getExternalStorageDirectory() + rootDirectory + "/" + userPropDirStr + "/" + userPropStr));
 			out.write("email:" + email);
 			out.newLine();
 			out.write("authId:" + authId);
@@ -64,11 +76,12 @@ public class FileManager {
 		}
 	}
 
+
 	public HashMap<String, String> readUserAuth() {
 		HashMap<String, String> resultMap = new HashMap<String, String>();
 
 		try {
-			BufferedReader in = new BufferedReader(new FileReader(rootDirectory + "/" + userPropDirStr + "/" + userPropStr));
+			BufferedReader in = new BufferedReader(new FileReader(Environment.getExternalStorageDirectory() + rootDirectory + "/" + userPropDirStr + "/" + userPropStr));
 			String strLine;
 			String[] eachLineStr;
 			while ((strLine = in.readLine()) != null) {
@@ -81,5 +94,7 @@ public class FileManager {
 		}
 		return resultMap;
 	}
+	
+	
 
 }

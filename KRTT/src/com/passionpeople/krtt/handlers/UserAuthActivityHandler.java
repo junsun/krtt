@@ -24,7 +24,7 @@ public class UserAuthActivityHandler extends Handler {
 	
 	public static UserAuthActivityHandler getInstance(){
 		if (uniqueInstance == null){
-			synchronized (MainActivityHandler.class) {
+			synchronized (UserAuthActivityHandler.class) {
 				if (uniqueInstance == null){
 					uniqueInstance = new UserAuthActivityHandler();
 				}
@@ -48,6 +48,8 @@ public class UserAuthActivityHandler extends Handler {
 					Log.d("###DEBUG####","TRUE!!!");
 					fileManager = FileManager.getInstance();
 					fileManager.writeUserAuth("junsun2005@naver.com", "7485");
+				} else {
+					
 				}
 			break;
 		}
