@@ -11,6 +11,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import android.os.Handler;
 import android.os.Message;
 
 import com.passionpeople.krtt.R;
@@ -25,12 +26,10 @@ public class HttpGetThread extends Thread {
 
 	private String url;
 	private JsonUtil jsonUtil;
-	private MainActivityHandler mainActivityHandler;
-	private UserAuthActivityHandler userAuthActivityHandler;
-	private SplashActivityHandler splashActivityHandler;
+	private Handler handler;
 	Message msg;
 	
-	public HttpGetThread(int urlType, HashMap<String, Object> param){
+	public HttpGetThread(int urlType, HashMap<String, Object> param, Handler handler){
 		msg = new Message();
 		msg.what = urlType;
 		
@@ -39,17 +38,20 @@ public class HttpGetThread extends Thread {
 				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_COMPANYLIST;	
 				break;
 	
-			case Constants.HTTPGET_GET_AUTH:
+			case Constants.HTTPGET_GET_CHECK_AUTH:
 				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_CHECK_AUTH
 				+ "?" + Constants.HTTPGET_PARAM_MAIL_TO + "=" + param.get("email").toString()
 				+ "&" + Constants.HTTPGET_PARAM_AUTH_ID + "=" + param.get("authId").toString();	
 				break;
+				
+			case Constants.HTTPGET_GET_SEND_MAIL:
+				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_SEND_MAIL
+				+ "?" + Constants.HTTPGET_PARAM_MAIL_TO + "=" + param.get("email").toString();	
+				break;	
 		}
 		
 		jsonUtil = new JsonUtil();
-		mainActivityHandler = MainActivityHandler.getInstance();
-		userAuthActivityHandler = UserAuthActivityHandler.getInstance();
-		splashActivityHandler = SplashActivityHandler.getInstance();
+		this.handler = handler;
 	}
 	
 	public void run() {
@@ -57,34 +59,42 @@ public class HttpGetThread extends Thread {
 		
 		switch (msg.what) {
 		
-		case Constants.HTTPGET_GET_COMPANYLIST:
-			try {
-				String res = EntityUtils.toString(getHttp(url));
-				ArrayList<HashMap<String, Object>> resultList = jsonUtil.Json2QList(res);
-				
-//				byte[] img;
-//				for (HashMap<String, Object> iterator : resultList){
-//					img = EntityUtils.toByteArray(getHttp(Constants.HTTPGET_URL_BASE + Constants.HTTPGET_GET_IMAGE + iterator.get("imgUrl")));
-//				}
-
-//				for (int i=0; i< resultList.size(); i++){
-//					System.out.println(i);
-//					img = EntityUtils.toByteArray(getHttp(Constants.HTTPGET_URL_BASE + Constants.HTTPGET_GET_IMAGE + resultList.get(i).get("imgUrl")));
-//
-//				}
-				msg.obj = resultList;
-				mainActivityHandler.sendMessage(msg);	
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			break;
+			case Constants.HTTPGET_GET_COMPANYLIST:
+				try {
+					String res = EntityUtils.toString(getHttp(url));
+					ArrayList<HashMap<String, Object>> resultList = jsonUtil.Json2QList(res);
+					
+//					byte[] img;
+//					for (HashMap<String, Object> iterator : resultList){
+//						img = EntityUtils.toByteArray(getHttp(Constants.HTTPGET_URL_BASE + Constants.HTTPGET_GET_IMAGE + iterator.get("imgUrl")));
+//					}
+//	
+//					for (int i=0; i< resultList.size(); i++){
+//						System.out.println(i);
+//						img = EntityUtils.toByteArray(getHttp(Constants.HTTPGET_URL_BASE + Constants.HTTPGET_GET_IMAGE + resultList.get(i).get("imgUrl")));
+//	
+//					}
+					msg.obj = resultList;
+					handler.sendMessage(msg);	
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
 			
-			case Constants.HTTPGET_GET_AUTH:
+			case Constants.HTTPGET_GET_CHECK_AUTH:
 				try {
 					String res = EntityUtils.toString(getHttp(url));
 					Map<String, String> resultMap = jsonUtil.Json2Map(res);
 					msg.obj = resultMap;
-					splashActivityHandler.sendMessage(msg);	
+					handler.sendMessage(msg);	
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			break;
+			
+			case Constants.HTTPGET_GET_SEND_MAIL:
+				try {
+					getHttp(url);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

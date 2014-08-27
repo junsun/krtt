@@ -41,7 +41,7 @@ public class SplashActivityHandler extends Handler {
 		super.handleMessage(msg);
 		
 		switch (msg.what) {
-			case Constants.HTTPGET_GET_AUTH:
+			case Constants.HTTPGET_GET_CHECK_AUTH:
 
 				Map<String, String> resultMap = (Map<String, String>)msg.obj;
 				Log.d("###DEBUG####","httpresult : "+resultMap);

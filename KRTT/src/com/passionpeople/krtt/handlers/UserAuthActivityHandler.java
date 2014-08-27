@@ -39,7 +39,7 @@ public class UserAuthActivityHandler extends Handler {
 		super.handleMessage(msg);
 		
 		switch (msg.what) {
-			case Constants.HTTPGET_GET_AUTH:
+			case Constants.HTTPGET_GET_CHECK_AUTH:
 
 				Map<String, String> resultMap = (Map<String, String>)msg.obj;
 				Log.d("###DEBUG####","httpresult : "+resultMap);
@@ -49,7 +49,7 @@ public class UserAuthActivityHandler extends Handler {
 					fileManager = FileManager.getInstance();
 					fileManager.writeUserAuth("junsun2005@naver.com", "7485");
 				} else {
-					
+					Log.d("###DEBUG####","FALSE!!!");
 				}
 			break;
 		}

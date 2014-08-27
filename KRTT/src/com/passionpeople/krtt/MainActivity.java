@@ -66,7 +66,7 @@ public class MainActivity extends Activity implements AnimationListener, OnClick
 		listview.addHeaderView(listHeader);
 		listview.addFooterView(listFooter);
 		
-    	httpGetThread = new HttpGetThread(Constants.HTTPGET_GET_COMPANYLIST, null);
+    	httpGetThread = new HttpGetThread(Constants.HTTPGET_GET_COMPANYLIST, null, MainActivityHandler.getInstance());
 		httpGetThread.start();
 	}
 

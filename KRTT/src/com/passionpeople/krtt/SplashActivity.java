@@ -2,6 +2,8 @@ package com.passionpeople.krtt;
 
 import java.util.HashMap;
 
+import com.passionpeople.krtt.handlers.MainActivityHandler;
+import com.passionpeople.krtt.handlers.SplashActivityHandler;
 import com.passionpeople.krtt.threads.HttpGetThread;
 import com.passionpeople.krtt.utils.FileManager;
 import com.passoinpeople.krtt.Constants.Constants;
@@ -34,7 +36,7 @@ public class SplashActivity extends Activity {
     		httpParam.put("email", userInfo.get("email"));
     		httpParam.put("authId", userInfo.get("authId"));
     		
-    		httpGetThread = new HttpGetThread(Constants.HTTPGET_GET_AUTH, httpParam);
+    		httpGetThread = new HttpGetThread(Constants.HTTPGET_GET_CHECK_AUTH, httpParam, SplashActivityHandler.getInstance());
     		httpGetThread.start();	
     		Log.d("###DEBUG####",fileManager.readUserAuth().toString());
         } else {
