@@ -1,7 +1,8 @@
 package com.passoinpeople.krtt.Constants;
 
 public class Constants {
-
+	
+	public final static String HTTPGET_URL_CHECK_UPDATE = "https://androidquery.appspot.com/api/market?app=com.passionpeople.krtt";
 	
 	public final static String HTTPGET_URL_BASE = "http://54.191.253.51/";
 	public final static String HTTPGET_URL_COMPANYLIST = "CAMPANY_LIST";
@@ -20,6 +21,7 @@ public class Constants {
 	
 //	54.191.253.51/CHECK_AUTH?MAIL_TO=junsun2005@naver.com&AUTH_ID=7485
 	
+	public final static int HTTPGET_GET_CHECK_UPDATE = 0;
 	public final static int HTTPGET_GET_COMPANYLIST = 1;
 	public final static int HTTPGET_GET_CHECK_AUTH = 2;
 	public final static int HTTPGET_GET_IMAGE = 3;
@@ -27,6 +29,13 @@ public class Constants {
 	public final static int HTTPGET_GET_ADD_LIKE_COMPANY = 5;
 	public final static int HTTPGET_GET_RMV_LIKE_COMPANY = 6;
 	public final static int HTTPGET_GET_LIKE_COMPANY_LIST = 7;
+	
+	
+	public final static int DIALOG_UPDATE_APP = 100;
+	
+	
+	public final static String DIALOG_UPDATE_APP_TITLE = "업데이트 확인";
+	public final static String DIALOG_UPDATE_APP_CONTENT = "App 업데이트를 위해 마켓으로 이동합니다. 3G,LTE 이용 시 데이터가 과금될 수 있습니다. wi-fi망을 이용해주세요";
 	
 	
 	public final static String SEND_AUTH_ID = "인증번호가 발송되었습니다.";

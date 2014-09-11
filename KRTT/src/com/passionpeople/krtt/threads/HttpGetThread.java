@@ -13,6 +13,7 @@ import org.apache.http.util.EntityUtils;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.passionpeople.krtt.R;
 import com.passionpeople.krtt.handlers.MainActivityHandler;
@@ -34,10 +35,14 @@ public class HttpGetThread extends Thread {
 		msg.what = urlType;
 		
 		switch (msg.what) {
+			case Constants.HTTPGET_GET_CHECK_UPDATE:
+				this.url = Constants.HTTPGET_URL_CHECK_UPDATE;	
+				break;
+	
 			case Constants.HTTPGET_GET_COMPANYLIST:
 				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_COMPANYLIST;	
 				break;
-	
+
 			case Constants.HTTPGET_GET_CHECK_AUTH:
 				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_CHECK_AUTH
 				+ "?" + Constants.HTTPGET_PARAM_MAIL_TO + "=" + param.get("email").toString()
@@ -75,6 +80,17 @@ public class HttpGetThread extends Thread {
 		super.run();
 		
 		switch (msg.what) {
+			
+			case Constants.HTTPGET_GET_CHECK_UPDATE:
+				try {
+					String res = EntityUtils.toString(getHttp(url));
+					Map<String, Object> resultMap = jsonUtil.Json2OMap(res);
+					msg.obj = resultMap;
+					handler.sendMessage(msg);	
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
 		
 			case Constants.HTTPGET_GET_COMPANYLIST:
 				try {

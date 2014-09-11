@@ -24,7 +24,7 @@ public class JsonUtil {
 	}
  
 	public Map<String, String> Json2Map(String jsonStr) {
- 
+		 
 		Map<String, String> mapObj = new HashMap<String, String>();
 		ObjectMapper mapper = new ObjectMapper();
  
@@ -32,6 +32,22 @@ public class JsonUtil {
  
 			// convert JSON string to Map
 			mapObj = mapper.readValue(jsonStr, new TypeReference<HashMap<String, String>>() {});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+ 
+		return mapObj;
+	}
+	
+	public Map<String, Object> Json2OMap(String jsonStr) {
+		 
+		Map<String, Object> mapObj = new HashMap<String, Object>();
+		ObjectMapper mapper = new ObjectMapper();
+ 
+		try {
+ 
+			// convert JSON string to Map
+			mapObj = mapper.readValue(jsonStr, new TypeReference<HashMap<String, Object>>() {});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
