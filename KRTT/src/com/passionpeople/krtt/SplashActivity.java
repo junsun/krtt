@@ -23,34 +23,39 @@ public class SplashActivity extends Activity {
 	private HashMap<String, Object> httpParam;
 	private boolean authrizedUser = false;
 	private HashMap<String, String> userInfo;
+	private SplashActivityHandler splashActivityHandler;
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        fileManager = new FileManager();
+        fileManager = FileManager.getInstance();
         userInfo = fileManager.readUserAuth();
         
-        if(userInfo.size() > 1){
-        	httpParam = new HashMap<String, Object>();
-    		httpParam.put("email", userInfo.get("email"));
-    		httpParam.put("authId", userInfo.get("authId"));
-    		
-    		httpGetThread = new HttpGetThread(Constants.HTTPGET_GET_CHECK_AUTH, httpParam, SplashActivityHandler.getInstance());
-    		httpGetThread.start();	
-    		Log.d("###DEBUG####",fileManager.readUserAuth().toString());
-        } else {
-            new Handler().postDelayed(new Runnable() {
-            	 
-                @Override
-                public void run() {
-                    Intent newIntent = new Intent(SplashActivity.this, UserAuthActivity.class);
-                    startActivity(newIntent);
-                    finish();
-                }
-            }, SPLASH_TIME_OUT);
-        }
+        splashActivityHandler = SplashActivityHandler.getInstance();
+        splashActivityHandler.setContext(this);
         
-        
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+            	
+	        if(userInfo.size() > 1){
+	        	httpParam = new HashMap<String, Object>();
+	    		httpParam.put("email", userInfo.get("email"));
+	    		httpParam.put("authId", userInfo.get("authId"));
+	    		
+	    		httpGetThread = new HttpGetThread(Constants.HTTPGET_GET_CHECK_AUTH, httpParam, SplashActivityHandler.getInstance());
+	    		httpGetThread.start();	
+	        } else {
+	                Intent newIntent = new Intent(SplashActivity.this, UserAuthActivity.class);
+	                newIntent.putExtra("email", userInfo.get("email"));
+	                newIntent.putExtra("authId", userInfo.get("authId"));
+	                startActivity(newIntent);
+	                finish();
+	            }
+	           
+	        }
+            
+        }, SPLASH_TIME_OUT);
     }
 }

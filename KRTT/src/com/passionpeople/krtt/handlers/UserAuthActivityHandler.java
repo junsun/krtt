@@ -4,22 +4,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.passionpeople.krtt.MainActivity;
+import com.passionpeople.krtt.UserAuthActivity;
 import com.passionpeople.krtt.utils.FileManager;
 import com.passionpeople.krtt.vo.Company;
 import com.passionpeople.krtt.vo.CompanyAdapter;
 import com.passoinpeople.krtt.Constants.Constants;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class UserAuthActivityHandler extends Handler {
 	
 	private volatile static UserAuthActivityHandler uniqueInstance;
+	private Context context;
 	private FileManager fileManager;
+	private HashMap<String, String> userInfo;
 	private UserAuthActivityHandler(){}
 	
 	public static UserAuthActivityHandler getInstance(){
@@ -32,6 +39,10 @@ public class UserAuthActivityHandler extends Handler {
 		}
 		
 		return uniqueInstance;
+	}
+
+	public void setContext(Context context){
+		this.context = context;
 	}
 	
 	@Override
@@ -46,11 +57,20 @@ public class UserAuthActivityHandler extends Handler {
 				
 				if(resultMap.get("RESULT").equals("true")){
 					Log.d("###DEBUG####","TRUE!!!");
+					
 					fileManager = FileManager.getInstance();
-					fileManager.writeUserAuth("junsun2005@naver.com", "7485");
+					userInfo = fileManager.readUserAuth();
+					
+					Toast.makeText(context, Constants.AUTH_SUCCESS, Toast.LENGTH_SHORT).show();
+					Intent newIntent = new Intent(context, MainActivity.class);
+	                newIntent.putExtra("email", userInfo.get("email"));
+	                newIntent.putExtra("authId", userInfo.get("authId"));
+	                context.startActivity(newIntent);
+	                ((Activity)context).finish();
 				} else {
-					Log.d("###DEBUG####","FALSE!!!");
+					Toast.makeText(context, Constants.AUTH_FAILED, Toast.LENGTH_LONG).show();
 				}
+				
 			break;
 		}
 		

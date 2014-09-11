@@ -1,5 +1,6 @@
 package com.passionpeople.krtt.handlers;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
@@ -18,6 +19,7 @@ public class SplashActivityHandler extends Handler {
 	private volatile static SplashActivityHandler uniqueInstance;
 	private Context context;
 	private FileManager fileManager;
+	private HashMap<String, String> userInfo;
 	private SplashActivityHandler(){}
 	
 	public static SplashActivityHandler getInstance(){
@@ -46,9 +48,14 @@ public class SplashActivityHandler extends Handler {
 				Map<String, String> resultMap = (Map<String, String>)msg.obj;
 				Log.d("###DEBUG####","httpresult : "+resultMap);
 				
+				fileManager = FileManager.getInstance();
+				userInfo = fileManager.readUserAuth();
+				
 				if(resultMap.get("RESULT").equals("true")){
 					Log.d("###DEBUG####","TRUE!!!");
 					Intent newIntent = new Intent(context, MainActivity.class);
+	                newIntent.putExtra("email", userInfo.get("email"));
+	                newIntent.putExtra("authId", userInfo.get("authId"));
 	                context.startActivity(newIntent);
 	                ((Activity)context).finish();
 				} else {

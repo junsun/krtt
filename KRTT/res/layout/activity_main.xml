@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-        
+    
      <LinearLayout
         android:id="@+id/menu"
         android:layout_width="fill_parent"
@@ -182,6 +182,35 @@
 	    </View>
 	    
 	    
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+			android:minHeight="10dip">
+	
+	        <TextView
+		        android:id="@+id/user_auth_sort_name"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="5dip"
+		        android:padding="10dip"
+		        android:text="·전체보기" 
+		        android:textSize="15sp"
+		        android:textColor="@color/click_dark_gray"
+		        android:textStyle="bold"/>
+			
+			<TextView
+		        android:id="@+id/user_auth_sort_like"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:padding="10dip"
+		        android:text="·Like보기" 
+		        android:textSize="15sp"
+		        android:textColor="@color/click_medium_gray"/>
+		
+	    </LinearLayout>
+	    
+	     
 	    <ListView
 	        android:layout_marginRight="10dip"
 	        android:layout_marginLeft="10dip"
@@ -198,6 +227,173 @@
 	    
 	</LinearLayout>
 	
-</FrameLayout>
+	
+   	<LinearLayout 
+   	    android:id="@+id/sortletter_area"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:focusable="false"
+        android:clickable="false"
+        android:layout_marginTop="100dip"
+        android:layout_marginRight="6dip"
+        android:layout_marginBottom="20dip"
+        android:padding="8dip"
+	    android:layout_alignParentRight="true"
+        android:weightSum="1"
+        android:alpha="0.7">
+   	    
+		<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="#" 
+	        android:textSize="18sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="A" 
+	        android:textSize="14sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="G" 
+	        android:textSize="14sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="N" 
+	        android:textSize="14sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="T" 
+	        android:textSize="14sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="Z" 
+	        android:textSize="14sp"
+	        android:textColor="@color/black"/>
+   	   
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㄱ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㄴ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㄷ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㄹ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㅁ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㅂ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/> 
+       <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㅅ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+       <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㅇ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㅈ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㅊ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㅋ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㅌ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㅍ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+   	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="0dip"
+	        android:layout_weight="0.05"
+	        android:text="ㅎ" 
+	        android:textSize="13sp"
+	        android:textColor="@color/black"/>
+		
+        
+   	    
+   	    
+   	    
+   	    
+        
+    </LinearLayout>
+    
+	
+</RelativeLayout>
 
     

@@ -19,11 +19,13 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int black=0x7f050006;
         public static final int click_blue=0x7f050000;
         public static final int click_dark_gray=0x7f050001;
-        public static final int click_light_gray=0x7f050003;
+        public static final int click_light_gray=0x7f050004;
         public static final int click_medium_gray=0x7f050002;
-        public static final int white=0x7f050004;
+        public static final int click_medium_light_gray=0x7f050003;
+        public static final int white=0x7f050005;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -147,24 +149,29 @@ public final class R {
         public static final int ic_like=0x7f02006c;
         public static final int ic_logo=0x7f02006d;
         public static final int ic_menu=0x7f02006e;
+        public static final int splash_bg=0x7f02006f;
+        public static final int splash_ic_krtt=0x7f020070;
+        public static final int splash_ic_passionpeople=0x7f020071;
     }
     public static final class id {
         public static final int BtnSlide=0x7f0a0002;
-        public static final int action_settings=0x7f0a000f;
+        public static final int action_settings=0x7f0a0011;
         public static final int app=0x7f0a0001;
-        public static final int ic_like=0x7f0a000d;
-        public static final int imageView1=0x7f0a0008;
-        public static final int layout_like=0x7f0a000c;
-        public static final int linearLayout1=0x7f0a0009;
-        public static final int listView1=0x7f0a0003;
+        public static final int ic_like=0x7f0a0010;
+        public static final int imageView1=0x7f0a000b;
+        public static final int layout_like=0x7f0a000f;
+        public static final int linearLayout1=0x7f0a000c;
+        public static final int listView1=0x7f0a0005;
         public static final int menu=0x7f0a0000;
-        public static final int textView1=0x7f0a000a;
-        public static final int textView2=0x7f0a000b;
-        public static final int txt_like=0x7f0a000e;
-        public static final int user_auth_email=0x7f0a0005;
-        public static final int user_auth_email_txt=0x7f0a0004;
-        public static final int user_auth_id=0x7f0a0007;
-        public static final int user_auth_id_txt=0x7f0a0006;
+        public static final int sortletter_area=0x7f0a0006;
+        public static final int textView1=0x7f0a000d;
+        public static final int textView2=0x7f0a000e;
+        public static final int user_auth_email=0x7f0a0008;
+        public static final int user_auth_email_txt=0x7f0a0007;
+        public static final int user_auth_id=0x7f0a000a;
+        public static final int user_auth_id_txt=0x7f0a0009;
+        public static final int user_auth_sort_like=0x7f0a0004;
+        public static final int user_auth_sort_name=0x7f0a0003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

@@ -63,6 +63,9 @@ public class FileManager {
 	}
 
 	
+	/**
+	 * Function : 사용자 권한 정보 Email, AuthID 에 저장
+	 */
 	public void writeUserAuth(String email, String authId) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(Environment.getExternalStorageDirectory() + rootDirectory + "/" + userPropDirStr + "/" + userPropStr));
@@ -77,6 +80,9 @@ public class FileManager {
 	}
 
 
+	/**
+	 * Function : 사용자 권한 획득했는지 파일 입력을 통하여 확인 후 Email, AuthID 반환
+	 */
 	public HashMap<String, String> readUserAuth() {
 		HashMap<String, String> resultMap = new HashMap<String, String>();
 

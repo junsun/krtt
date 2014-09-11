@@ -6,7 +6,7 @@
 
     <View
         android:layout_width="fill_parent"
-        android:layout_height="10dip"
+        android:layout_height="0dip"
         android:background="#dadada" >
     </View>
 

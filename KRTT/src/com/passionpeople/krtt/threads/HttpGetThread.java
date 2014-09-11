@@ -48,6 +48,23 @@ public class HttpGetThread extends Thread {
 				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_SEND_MAIL
 				+ "?" + Constants.HTTPGET_PARAM_MAIL_TO + "=" + param.get("email").toString();	
 				break;	
+				
+			case Constants.HTTPGET_GET_LIKE_COMPANY_LIST:
+				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_COMPANYLIST_LIKED
+				+ "?" + Constants.HTTPGET_PARAM_EMAIL + "=" + param.get("email").toString();	
+				break;	
+				
+			case Constants.HTTPGET_GET_ADD_LIKE_COMPANY:
+				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_ADD_LIKE
+				+ "?" + Constants.HTTPGET_PARAM_EMAIL + "=" + param.get("email").toString()
+				+ "&" + Constants.HTTPGET_PARAM_CP_ID + "=" + param.get("cpId").toString();	
+				break;	
+				
+			case Constants.HTTPGET_GET_RMV_LIKE_COMPANY:
+				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_RMV_LIKE
+				+ "?" + Constants.HTTPGET_PARAM_EMAIL + "=" + param.get("email").toString()
+				+ "&" + Constants.HTTPGET_PARAM_CP_ID + "=" + param.get("cpId").toString();	
+				break;	
 		}
 		
 		jsonUtil = new JsonUtil();
@@ -63,17 +80,6 @@ public class HttpGetThread extends Thread {
 				try {
 					String res = EntityUtils.toString(getHttp(url));
 					ArrayList<HashMap<String, Object>> resultList = jsonUtil.Json2QList(res);
-					
-//					byte[] img;
-//					for (HashMap<String, Object> iterator : resultList){
-//						img = EntityUtils.toByteArray(getHttp(Constants.HTTPGET_URL_BASE + Constants.HTTPGET_GET_IMAGE + iterator.get("imgUrl")));
-//					}
-//	
-//					for (int i=0; i< resultList.size(); i++){
-//						System.out.println(i);
-//						img = EntityUtils.toByteArray(getHttp(Constants.HTTPGET_URL_BASE + Constants.HTTPGET_GET_IMAGE + resultList.get(i).get("imgUrl")));
-//	
-//					}
 					msg.obj = resultList;
 					handler.sendMessage(msg);	
 				} catch (Exception e) {
@@ -95,6 +101,25 @@ public class HttpGetThread extends Thread {
 			case Constants.HTTPGET_GET_SEND_MAIL:
 				try {
 					getHttp(url);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			break;
+
+			case Constants.HTTPGET_GET_LIKE_COMPANY_LIST:
+			case Constants.HTTPGET_GET_ADD_LIKE_COMPANY:
+			case Constants.HTTPGET_GET_RMV_LIKE_COMPANY:
+				try {
+					String res = EntityUtils.toString(getHttp(url));
+					ArrayList<HashMap<String, Object>> resultList = jsonUtil.Json2QList(res);
+					ArrayList<String> resultStrList = new ArrayList<String>();
+					
+					for(HashMap<String, Object> iterator : resultList){
+						resultStrList.add(iterator.get("CP_ID").toString());
+					}
+					
+					msg.obj = resultStrList;
+					handler.sendMessage(msg);	
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

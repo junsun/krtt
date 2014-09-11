@@ -40,13 +40,28 @@ public class JsonUtil {
 	}
 	
 	public ArrayList<HashMap<String, Object>> Json2QList(String jsonStr) {
- 
+		 
 		ArrayList<HashMap<String, Object>> listObj = new ArrayList<HashMap<String, Object>>();
 		ObjectMapper mapper = new ObjectMapper();
  
 		try {
 			// convert JSON string to Array
 			listObj = mapper.readValue(jsonStr, new TypeReference<ArrayList<HashMap<String, Object>>>() {});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+ 
+		return listObj;
+	}
+	
+	public ArrayList<String> Json2StrList(String jsonStr) {
+		 
+		ArrayList<String> listObj = new ArrayList<String>();
+		ObjectMapper mapper = new ObjectMapper();
+ 
+		try {
+			// convert JSON string to Array
+			listObj = mapper.readValue(jsonStr, new TypeReference<String>() {});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
