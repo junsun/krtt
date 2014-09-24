@@ -66,6 +66,20 @@ public class FileManager {
 	/**
 	 * Function : 사용자 권한 정보 Email, AuthID 에 저장
 	 */
+	public void writeNull() {
+		try {
+			BufferedWriter out = new BufferedWriter(new FileWriter(Environment.getExternalStorageDirectory() + rootDirectory + "/" + userPropDirStr + "/" + userPropStr));
+			out.write("");
+			out.close();
+		} catch (IOException e) {
+			System.err.println(e);
+		}
+	}
+	
+	
+	/**
+	 * Function : 사용자 권한 정보 Email, AuthID 에 저장
+	 */
 	public void writeUserAuth(String email, String authId) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(Environment.getExternalStorageDirectory() + rootDirectory + "/" + userPropDirStr + "/" + userPropStr));

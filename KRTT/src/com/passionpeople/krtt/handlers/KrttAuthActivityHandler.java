@@ -1,16 +1,7 @@
 package com.passionpeople.krtt.handlers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.passionpeople.krtt.KrttAuthActivity;
-import com.passionpeople.krtt.MainActivity;
-import com.passionpeople.krtt.UserAuthActivity;
-import com.passionpeople.krtt.utils.FileManager;
-import com.passionpeople.krtt.vo.Company;
-import com.passionpeople.krtt.vo.CompanyAdapter;
-import com.passoinpeople.krtt.Constants.Constants;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,23 +9,25 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
 import android.widget.Toast;
 
-public class UserAuthActivityHandler extends Handler {
+import com.passionpeople.krtt.MainActivity;
+import com.passionpeople.krtt.utils.FileManager;
+import com.passoinpeople.krtt.Constants.Constants;
+
+public class KrttAuthActivityHandler extends Handler {
 	
-	private volatile static UserAuthActivityHandler uniqueInstance;
+	private volatile static KrttAuthActivityHandler uniqueInstance;
 	private Context context;
 	private FileManager fileManager;
 	private HashMap<String, String> userInfo;
-	private UserAuthActivityHandler(){}
+	private KrttAuthActivityHandler(){}
 	
-	public static UserAuthActivityHandler getInstance(){
+	public static KrttAuthActivityHandler getInstance(){
 		if (uniqueInstance == null){
-			synchronized (UserAuthActivityHandler.class) {
+			synchronized (KrttAuthActivityHandler.class) {
 				if (uniqueInstance == null){
-					uniqueInstance = new UserAuthActivityHandler();
+					uniqueInstance = new KrttAuthActivityHandler();
 				}
 			}
 		}
@@ -51,7 +44,7 @@ public class UserAuthActivityHandler extends Handler {
 		super.handleMessage(msg);
 		
 		switch (msg.what) {
-			case Constants.HTTPGET_GET_CHECK_USER_AUTH:
+			case Constants.HTTPGET_GET_CHECK_KRTT_AUTH:
 
 				Map<String, String> resultMap = (Map<String, String>)msg.obj;
 				Log.d("###DEBUG####","httpresult : "+resultMap);
@@ -63,13 +56,13 @@ public class UserAuthActivityHandler extends Handler {
 					userInfo = fileManager.readUserAuth();
 					
 					Toast.makeText(context, Constants.AUTH_SUCCESS, Toast.LENGTH_SHORT).show();
-					Intent newIntent = new Intent(context, KrttAuthActivity.class);
+					Intent newIntent = new Intent(context, MainActivity.class);
 	                newIntent.putExtra("email", userInfo.get("email"));
 	                newIntent.putExtra("authId", userInfo.get("authId"));
 	                context.startActivity(newIntent);
 	                ((Activity)context).finish();
 				} else {
-					Toast.makeText(context, Constants.AUTH_FAILED, Toast.LENGTH_LONG).show();
+					Toast.makeText(context, Constants.KRTT_AUTH_FAILED, Toast.LENGTH_LONG).show();
 				}
 				
 			break;

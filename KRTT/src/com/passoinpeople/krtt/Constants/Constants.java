@@ -2,12 +2,14 @@ package com.passoinpeople.krtt.Constants;
 
 public class Constants {
 	
+	public final static int SPLASH_TIME_OUT = 1500;
 	public final static String HTTPGET_URL_CHECK_UPDATE = "https://androidquery.appspot.com/api/market?app=com.passionpeople.krtt";
 	
 	public final static String HTTPGET_URL_BASE = "http://54.191.253.51/";
 	public final static String HTTPGET_URL_COMPANYLIST = "CAMPANY_LIST";
 	public final static String HTTPGET_URL_IMAGE = "IMG_DOWN?IMG_NM=";
-	public final static String HTTPGET_URL_CHECK_AUTH = "CHECK_AUTH";
+	public final static String HTTPGET_URL_CHECK_USER_AUTH = "CHECK_AUTH";
+	public final static String HTTPGET_URL_CHECK_KRTT_AUTH = "CHECK_KRTT_AUTH";
 	public final static String HTTPGET_URL_SEND_MAIL = "SEND_MAIL";
 	public final static String HTTPGET_URL_COMPANYLIST_LIKED = "COMPANY_LIKED_LIST";
 	public final static String HTTPGET_URL_ADD_LIKE = "COMPANY_LIKED_ADD";
@@ -23,7 +25,8 @@ public class Constants {
 	
 	public final static int HTTPGET_GET_CHECK_UPDATE = 0;
 	public final static int HTTPGET_GET_COMPANYLIST = 1;
-	public final static int HTTPGET_GET_CHECK_AUTH = 2;
+	public final static int HTTPGET_GET_CHECK_USER_AUTH = 2;
+	public final static int HTTPGET_GET_CHECK_KRTT_AUTH = 8;
 	public final static int HTTPGET_GET_IMAGE = 3;
 	public final static int HTTPGET_GET_SEND_MAIL = 4;
 	public final static int HTTPGET_GET_ADD_LIKE_COMPANY = 5;
@@ -41,6 +44,7 @@ public class Constants {
 	public final static String SEND_AUTH_ID = "인증번호가 발송되었습니다.";
 	public final static String AUTH_SUCCESS = "성공적으로 인증되었습니다.";
 	public final static String AUTH_FAILED = "인증번호 혹은 메일주소가 잘못되었습니다.";
+	public final static String KRTT_AUTH_FAILED = "인증문자가 잘못되었습니다.";
 	
 	
 	

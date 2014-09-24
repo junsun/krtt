@@ -66,7 +66,7 @@ public class UserAuthActivity extends Activity implements OnClickListener{
     		httpParam.put("authId", authIdTxt.getText());
 			fileManager.writeUserAuth(emailTxt.getText().toString(), authIdTxt.getText().toString());
 			
-    		httpGetThread = new HttpGetThread(Constants.HTTPGET_GET_CHECK_AUTH, httpParam, userAuthActivityHandler);
+    		httpGetThread = new HttpGetThread(Constants.HTTPGET_GET_CHECK_USER_AUTH, httpParam, userAuthActivityHandler);
     		httpGetThread.start();	
 		}
 		

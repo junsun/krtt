@@ -5,6 +5,7 @@
 	<color name="click_medium_gray">#999</color>
 	<color name="click_medium_light_gray">#ccc</color>
 	<color name="click_light_gray">#eee</color>
+	<color name="btn_userauth_blue">#0e0a9b</color>
 	<color name="white">#FFFFFF</color> 
 	<color name="black">#000000</color> 
 </resources> 

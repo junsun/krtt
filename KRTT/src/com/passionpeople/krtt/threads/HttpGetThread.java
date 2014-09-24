@@ -43,9 +43,15 @@ public class HttpGetThread extends Thread {
 				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_COMPANYLIST;	
 				break;
 
-			case Constants.HTTPGET_GET_CHECK_AUTH:
-				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_CHECK_AUTH
+			case Constants.HTTPGET_GET_CHECK_USER_AUTH:
+				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_CHECK_USER_AUTH
 				+ "?" + Constants.HTTPGET_PARAM_MAIL_TO + "=" + param.get("email").toString()
+				+ "&" + Constants.HTTPGET_PARAM_AUTH_ID + "=" + param.get("authId").toString();	
+				break;
+				
+			case Constants.HTTPGET_GET_CHECK_KRTT_AUTH:
+				this.url = Constants.HTTPGET_URL_BASE + Constants.HTTPGET_URL_CHECK_KRTT_AUTH
+				+ "?" + Constants.HTTPGET_PARAM_EMAIL + "=" + param.get("email").toString()
 				+ "&" + Constants.HTTPGET_PARAM_AUTH_ID + "=" + param.get("authId").toString();	
 				break;
 				
@@ -103,7 +109,7 @@ public class HttpGetThread extends Thread {
 				}
 				break;
 			
-			case Constants.HTTPGET_GET_CHECK_AUTH:
+			case Constants.HTTPGET_GET_CHECK_USER_AUTH:
 				try {
 					String res = EntityUtils.toString(getHttp(url));
 					Map<String, String> resultMap = jsonUtil.Json2Map(res);
@@ -111,6 +117,19 @@ public class HttpGetThread extends Thread {
 					handler.sendMessage(msg);	
 				} catch (Exception e) {
 					e.printStackTrace();
+				}
+			break;
+			
+			case Constants.HTTPGET_GET_CHECK_KRTT_AUTH:
+				try {
+					String res = EntityUtils.toString(getHttp(url));
+					Map<String, String> resultMap = jsonUtil.Json2Map(res);
+					msg.obj = resultMap;
+					handler.sendMessage(msg);	
+				} catch (Exception e) {
+					e.printStackTrace();
+					
+					
 				}
 			break;
 			
